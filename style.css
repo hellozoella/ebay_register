@@ -1,0 +1,153 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	padding:0;
+	margin:0 auto;
+	font-weight:300;
+	color: #222;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background:#f8f8f8 url(imgbg.jpg) repeat;
+	width: 400px;
+	}
+a { text-decoration:none }
+.left {
+	float: left;
+	width:172px;
+	}
+.space {
+	height: 20px;
+	}
+.clear {
+	float: none;
+	clear:both;
+	}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+	color: #222 !important;
+	}
+.bg {
+	margin: 20px auto;
+	}
+.whbg {
+	min-height:430px;
+	width:360px;
+	padding: 20px;
+	background: #fff;
+	border-radius:3px;
+	border:1px solid #C8C8C8;
+	}
+a.title {
+	display: block;
+	width:117px;
+	height: 48px;
+	background:url(ebay.png) no-repeat top left;
+	background-size: 100% 100%;
+	margin:0 auto 40px auto;
+	}
+a.cmm {
+	font-size:14px; 
+	color:#6a29b9;
+	}
+
+.newlook {
+	font-size: 18px;
+	color: #555;
+	font-weight: 200;
+	text-align: center;
+    padding-bottom: 20px;
+	display: block;
+	}
+.regis {
+	display: inline-block;
+	vertical-align: middle;
+	width: 60%;
+	font-weight: 200;
+	margin:0 0 30px 0;
+	}
+input[type=text], input[type=password], textarea {
+	width:340px;
+	border: 1px solid #ddd;
+	background: #f8f8f8;
+	outline:none;
+	box-shadow: 0 1px 0 rgba(255,255,255,0.8),inset 0 1px 2px rgba(0,0,0,0.06);
+  	margin-top:10px;
+	color: #999;
+	font-size: 16px;
+	padding:8px;
+	border-radius: 3px;
+  }
+input[type=text].input_name {
+	float:left;
+	width:154px;
+	}
+.error {
+	font-style:normal;
+	font-size:12px;
+	margin-top: 10px;
+	color:#EC0003;
+	line-height:25px;
+	}
+.disabled {
+	border-color:red !important;
+	}
+.terms {
+	font-weight:normal;
+	font-size: 12px;
+	color: #555;
+	}
+.submit {
+	outline:none;
+	letter-spacing:-0.5px;
+	background: -webkit-gradient(linear,left top,left bottom,from(#0079bc),to(#00509d));
+	margin-top: 20px;
+	width:360px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	padding:8px;
+	border-radius: 3px;
+	border:none;
+	}
+.sets {
+	display:none;
+	margin: 0 0 0 20px;
+	padding:0;
+	}
+.sets li.none {
+	list-style:none;
+	padding:10px 0;
+	}
+.sets li {
+	font-weight:normal;
+	line-height:18px;
+	padding:0;
+	margin:0;
+	color: #666;
+	font-size:12px;
+	}
+.sets li div {
+	float: left;
+	}
+.variable {
+	margin: 5px 0 0 10px;
+	display: block;
+	background:#CCC8C8;
+	height: 8px;
+	width: 80px;
+	border-radius: 3px;
+	}
+.weak, .medium, .strong {
+	height:8px;
+	display: block;
+	}
+.weak {
+	background: red;
+	width:20px;
+	}
+.medium {
+	background: yellow;
+	width:40px;
+	}
+.strong {
+	background: green;
+	width:50px;
+	}

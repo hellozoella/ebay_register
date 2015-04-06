@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ebay</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="jquery.min.js"></script>
+</head>
+
+<body>
+<form class="bg">
+   <a class="title" href="http://ebay.co.uk"></a>
+   <span class="newlook">We've got a new look! | <a href="#" class="cmm">Comments?</a></span>
+   <div class="whbg">
+   <p class="regis">REGISTER</p><br>
+     <input type="text" class="input" id="email" name="email" placeholder="Email"><br>
+     <i class="error" id="error_1">Please enter your email address.</i>
+     <i class="error" id="error_2">Please enter more than 5 characters.</i>
+     <i class="error" id="error_3">Please enter a valid email address.</i>
+
+     <input class="input" type="text" id="re_email" name="re_email" placeholder="Re-enter email">
+     <i class="error" id="error_4">Please enter your email address again.</i>
+     <i class="error" id="error_5">These emails don't match. Please try again.</i>
+
+     <input type="password" class="input" id="password" name="password" placeholder="Password">
+     <i class="error" id="error_6">Please enter your password.</i>
+     <i class="error" id="error_7">Please enter at least 6 characters.</i>
+     <i class="error" id="error_8">Please select a password that is at least 6 characters long and a combination of at least 2 letters, numbers or special characters.</i>
+     <ul class="sets" id="sets">
+       <li class="none" id="strength"><div class="text">Strength </div> <div><span class="variable" id="variable"><i class="added" id="added"></i></span></div></li>
+       <li class="clear">Use 6 to 64 characters.</li>
+       <li>Besides letters, use at least a number or symbol (!@#$%^&*()-_+=). </li>
+       <li>Password is case senstive.</li>
+       <li>Avoid using the password for multiple sites.</li>
+     </ul>
+     <div class="clear"></div>
+
+     
+     <div class="left">
+       <input class="input_name" type="text" id="firstname" placeholder="First name" name="firstname">
+       <i class="error" id="error_9">Please enter your fist name.</i>
+     </div>
+     <div class="left" style="margin-left:14px">
+       <input class="input_name" type="text" id="lastname" placeholder="Last name" name="lastname">
+       <i class="error" id="error_10">Please enter your last name.</i>
+     </div>
+     <div class="clear"></div>
+     <div class="clear"></div>
+     <div class="space"></div>
+     <span class="terms">By clicking <strong>Register</strong>, I agree I've read and accept <a href="#">eBay's User Agreement</a>, I'm at least 18 years old, and I consent to the <a href="#">processing of my data</a> and to receiving marketing communications from eBay.</span>
+     <input id="sbtBtn" class="submit" type="submit" value="Register">
+     <span class="error" id="tnk">Thanks for your register!</span>
+   </div>
+</form>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$('#error_1, #error_2, #error_3, #error_4, #error_5, #error_6, #error_7, #error_8, #error_9, #error_10, #tnk').hide();
+	$('#email').focus($(this).addClass('.focus'));
+	var count = 0;		
+		//lenRe, lenPa, lenFr, lenLa
+		
+	$('#email').blur(function(){
+		var dataem = $('#email').val();
+		    lenem = dataem.length;
+		if(lenem<1){
+			count ++;
+			$('#error_1').show();
+			$('#error_2, #error_3').hide();
+			$('#email').addClass('disabled');
+			}
+		else {
+			if(lenem<5){
+				count ++;
+				$('#error_1,#error_3').hide();
+				$('#error_2').show();
+				$('#email').addClass('disabled');
+				}
+			else { //lenEm>5
+				function validate_email(email){
+					var pattern = new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/);
+					return pattern.test(email)
+					};
+					
+					if(validate_email(dataem)){
+						$('#error_1, #error_2, #error_3').hide();
+						$('#email').removeClass('disabled');
+						}
+					else{
+						count ++;
+						$('#error_1, #error_2').hide();
+						$('#error_3').show();
+						$('#email').addClass('disabled');
+						};	
+				}
+				}; 
+		});  // end email
+		
+			$('#re_email').blur(function(){
+				var dataRe = $('#re_email').val();
+					lenRe = dataRe.length;
+				if(lenRe<1){
+					count ++;
+					$('#error_4').show();
+					$('#error_5').hide();
+					$('#re_email').addClass('disabled');
+					}
+				else{
+					if($('#re_email').val() != $('#email').val()){
+						count ++;
+						$('#error_4').hide();
+						$('#error_5').show();
+						$('#re_email').addClass('disabled');
+						}
+					else{
+						$('#error_4, #error_5').hide();
+						$('#re_email').removeClass('disabled');
+						}
+					}
+				});  //end blur
+			
+	     $('#password').focus(function(){
+			var dataPa = $('#password').val();
+				lenPa = dataPa.length;
+			 $('#sets').show();
+			 $('#error_6, #error_7, #error_8').hide();
+			 if(lenPa>1, lenPa<6){
+					$('#added').addClass('weak');
+					$('.text').text('Too short ');
+				 }
+			 else{
+				if(lenPa<20){
+					$('#added').addClass('medium');
+					$('#added').removeClass('weak');
+					$('.text').text('Medium');
+					}
+				else{
+					$('#added').addClass('strong');
+					$('#added').removeClass('weak');
+					$('#added').removeClass('medium');
+					$('.text').text('Strong');
+					};
+				 };
+			 });  // end password focus
+		 $('#password').blur(function(){
+			var dataPa = $('#password').val();
+				lenPa = dataPa.length;
+			 if(lenPa<1){
+				 count ++;
+				 $('#error_6').show();
+				 $('#error_7, #error_8').hide();
+				 $('#password').addClass('disabled');
+			   	 $('#variable').prepend('');
+				 }
+			 else{
+				if(lenPa<6){
+					$('#error_6, #error_8').hide();
+					$('#error_7').show();
+					$('#password').addClass('disabled');
+					}
+				else{
+					function validate_password(password){
+						var pattern = new RegExp(/^[a-zA-Z0-9_]+$/);
+						return pattern.test(password);
+						}
+					if(validate_password(dataPa)){
+						$('#error_6, #error_7, #error_8').hide();
+						$('#sets').hide();
+						$('#password').removeClass('disabled');
+						}
+					else{
+						count ++;
+						$('#error_6, #error_7').hide();
+						$('#error_8').show();
+						$('#password').addClass('disabled');
+						}
+					}; 
+				 };
+			 });  // end password blur
+			 
+			 $('#firstname').blur(function(){
+				var dataFr = $('#firstname').val();
+					lenFr = dataFr.length;
+				 function validate_frn(frn) {
+					 var pattern = new RegExp (/^[a-zA-Z0-9_-]+$/);
+					 return pattern.test(frn)
+					 }
+				 if(validate_frn(dataFr)){
+					 $('#error_9').hide();
+					 }
+				 else{
+					 count ++;
+					 $('#error_9').show();
+					 $('#firstname').addClass('disabled');
+					 }
+				 });  //end first name
+				 
+			 $('#lastname').blur(function(){
+			  	 var dataLa = $('#lastname').val();
+					 lenLa = dataLa.length;
+				 function validate_ltn(ltn) {
+					 var pattern = new RegExp (/^[a-zA-Z0-9_-]+$/);
+					 return pattern.test(ltn)
+					 }
+				 if(validate_ltn(dataLa)){
+					 $('#error_10').hide();
+					 }
+				 else{
+					 count ++;
+					 $('#error_10').show();
+					 $('#lastname').addClass('disabled');
+					 }
+				 });  //end last name
+				 
+			$('#sbtBtn').click(function(event){
+				var dataEm = $('#email').val(); 
+				    dataRe = $('#re_email').val();
+					dataPa = $('#password').val(); 
+					dataFr = $('#firstname').val(); 
+					dataLa = $('#lastname').val();
+					lenEm = dataEm.length; 
+					lenRe = dataRe.length; 
+					lenPa = dataPa.length; 
+					lenFr = dataFr.length; 
+					lenLa = dataLa.length;
+
+				if(count == 0, lenEm<1, lenRe<1, lenPa<1, lenFr<1, lenLa<1){
+					$('#error_1, #error_4, #error_6, #error_9, #error_10').show();
+					$('#email, #password, #re_email, #firstname, #lastname').addClass('disabled');
+					}
+				else{
+					$('#tnk').show();
+					};
+				event.preventDefault();
+				});  // end sbBtn click
+	
+	})
+</script>
+
+</body>
+</html>
